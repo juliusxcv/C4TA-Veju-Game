@@ -62,11 +62,48 @@ class Ball { //Erstellt Ball Klasse
 
 
 class Player{
+    constructor() {
+        this.PlayerPosX =
+        this.PlayerPosY =
+        this.PlayerSize = 
+        this.PlayerMove = 
+    }
 
 }
 
+//RECT1 Platform BOUNDARIES: Sprich, das Spielfeld. Die if Konditionen sagen der Platform, dass wenn ihr X und Y Wert ausserhalb des Canvas gerät der rectMove Wert umgekehrt wird.
+      if(this.PlayerPosX < 0 + PlayerSize/2){
+        PlayerPosX = PlayerPosX + PlayerMove
+      }
+      if(PlayerPosX > width - PlayerSize/2){
+        PlayerPosX = PlayerPosX - PlayerMove
+      }
+      if(PlayerPosY < 0 + PlayerSize/2){
+        PlayerPosY = PlayerPosY + PlayerMove
+      }
+      if(PlayerPosY > height - PlayerSize/2){
+        PlayerPosY = PlayerPosY - PlayerMove
+      }
 
-
+// Das hier ist die Steuerung mit den Pfeiltasten. UP, DOWN, LEFT, RIGHT
+function keyPressed(){
+    //MOVE UP
+    if(keyCode == UP_ARROW && keyIsPressed){
+      playerPosY = playerPosY-playerMove
+    }
+  //MOVE DOWN
+    if(keyCode == DOWN_ARROW && keyIsPressed){
+      playerPosY = playerPosY + playerMove
+    }
+  //MOVE LEFT
+    if(keyCode == LEFT_ARROW && keyIsPressed){
+      playerPosX = playerPosX - rectMove
+    }
+  //MOVE RIGHT
+    if(keyCode == RIGHT_ARROW && keyIsPressed){
+      rect1X = rect1X + rectMove
+    }
+}
 
 
 
