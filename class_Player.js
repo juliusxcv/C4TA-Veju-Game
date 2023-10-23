@@ -9,6 +9,17 @@ class Player{
         this.PlayerRotation = 45
         this.PlayerMove = 10
     }
+
+    PlayerBoundaries() { 
+        //Erstellt die Grenzen und kehrt den Vektor um wenn die Grenzen erreicht werden
+        if (this.PlayerPosX < this.PlayerSize/2 || this.PlayerPosX > width - this.PlayerSize/2) {
+            this.PlayerMove *= -1
+        }
+        if (this.PlayerPosY < this.PlayerSize/2 || this.PlayerPosY > width - this.PlayerSize/2) {
+            this.PlayerMove *= -1
+        }
+    }
+
     move() {
         //MOVE UP
         if(keyCode == UP_ARROW && keyIsPressed){
