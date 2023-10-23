@@ -27,6 +27,7 @@ function draw() {
         balls[i].show() //Zeichnet die Kreise, die Zahlen sind ihre indexnummern. Die brauchen die Kreise um sich selber zu kennen 
     }  
 
+    player.move()
     player.show() // Neu
 
 
