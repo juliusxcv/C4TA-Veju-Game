@@ -1,18 +1,17 @@
 var balls = [] //Leerer Array der mit Kreisen befüllt wird
-let player // Muss hier definiert werden sonst ist es nicht sichbar
-let timer  // Timer Wert
 
+let timer  // Timer Wert
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
     
     //Loop der die Kreise macht
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < 100; i++){
         let b = new Ball(i)
         balls.push(b)
     }
 
-    player = new Player() // Neu
+    //player = new Player() // Neu PLAYER IS RETIRED
 }
 
 
@@ -28,6 +27,7 @@ function draw() {
         balls[i].move() //Gibt den Kreisen ihre Gescwindigkeit
         balls[i].show() //Zeichnet die Kreise, die Zahlen sind ihre indexnummern. Die brauchen die Kreise um sich selber zu kennen 
     }  
+
     player.PlayerBoundaries()
     player.move()
     player.show()

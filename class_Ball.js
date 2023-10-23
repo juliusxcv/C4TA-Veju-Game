@@ -4,12 +4,11 @@ class Ball { //Erstellt Ball Klasse
     constructor(index) {
         //this.index gibt den Kreisen ihren eigenen Wert um sie vergleichen zukönnen, zum einfärben zum Beispiel
         this.index = index
-        this.radius = 50
+        this.radius = 10
         //this.pos Gibt den Kreisen eine zufällige Startposition mit createVector(enthält x und y Wert) und verteilt sie so, dass sie nicht aus dem Canvas lampen
         this.pos = createVector(random(this.radius, width - this.radius), random(this.radius, height - this.radius)) 
         //this.vel erstellt die Richtung mithilfe Vektoren. this.vel gibt x und y wert aus
         this.vel = p5.Vector.random2D().mult(2)
-      //console.log(this.vel)
     }
 
     collide() { 
@@ -22,6 +21,7 @@ class Ball { //Erstellt Ball Klasse
             let d = dist(this.pos.x, this.pos.y, balls[i].pos.x, balls[i].pos.y)
 
             if (d < this.radius + balls[i].radius && this.index !== i) {
+                this.vel = this.vel.mult(-1)
                 fill(255,0,0)
                 break
             } else {
@@ -48,7 +48,7 @@ class Ball { //Erstellt Ball Klasse
         noStroke()
         ellipse(this.pos.x, this.pos.y, this.radius*2)
         fill(0)
-        textSize(100)
+        textSize(50)
         textAlign(CENTER, CENTER)
         text(this.index, this.pos.x, this.pos.y)
     }
