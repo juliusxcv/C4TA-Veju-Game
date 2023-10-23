@@ -1,16 +1,16 @@
 var balls = [] //Leerer Array der mit Kreisen befüllt wird
-let player // Muss hier definiert werden sonst ist es nicht sichbar
+//let player // Muss hier definiert werden sonst ist es nicht sichbar
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
     
     //Loop der die Kreise macht
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < 100; i++){
         let b = new Ball(i)
         balls.push(b)
     }
 
-    player = new Player() // Neu
+    //player = new Player() // Neu PLAYER IS RETIRED
 }
 
 
