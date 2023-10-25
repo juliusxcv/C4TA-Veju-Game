@@ -9,7 +9,7 @@ class Ball { //Erstellt Ball Klasse
         this.pos = createVector(random(this.radius, width - this.radius), random(this.radius, height - this.radius)) 
         //this.vel erstellt die Richtung mithilfe Vektoren. this.vel gibt x und y wert aus
         this.vel = p5.Vector.random2D().mult(2)
-        this.freezed = true
+        this.freezed = false
     }
 
     collide() { 
@@ -48,10 +48,10 @@ class Ball { //Erstellt Ball Klasse
 
         //Die else if Schleife hört zu ob das Statement "this.freezed = true" ist,
         //falls das Statement nicht false ist setzt sie die Geschwindigkeit auf 0 "this.vel.set(0)"
-        if (this.freezed == true) {
+        if (!this.freezed) {
             fill(0,255,0)
             this.pos.add(this.vel)
-        } else if (!this.freezed){
+        } else {
             fill(0,0,255)
             this.vel.set(0)
         }

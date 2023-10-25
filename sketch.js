@@ -37,7 +37,7 @@ function draw() {
 // Der Mausklick kommt durch nur wird der Boolean TRUE/FALSE nicht auf TRUE gesetzt leider. 
 function mousePressed() {
     for (const ball of balls) {
-        if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius) {
+        if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius && mouseX >= ball.pos.x - ball.radius && mouseY >= ball.pos.y - ball.radius) {
         ball.freezed == true
         }
     }
