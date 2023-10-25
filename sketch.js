@@ -1,6 +1,7 @@
 var balls = [] //Leerer Array der mit Kreisen befüllt wird
 let timer  // Timer Wert
 let gameTimer
+let nextClickableBallIndex = 0
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
@@ -32,19 +33,29 @@ function draw() {
 
 }
 
-// NEU!!! Diese Funktion soll bei einem Mausklick den Status des "this.freezed" in der Ball Klasse auf TRUE setzen.
-// Auf TRUE sollte die Bewegung stoppen und die Farbe auf Blau gesetzt werden. 
-// Der Mausklick kommt durch nur wird der Boolean TRUE/FALSE nicht auf TRUE gesetzt leider. 
+ //Start mit dem ersten Ball im Array
+
+// NEU!!! Zusätzlich werden die Negativ Werte von X und Y auch geprüft.
+
 function mousePressed() {
-    for (const ball of balls) {
-        if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius && mouseX >= ball.pos.x - ball.radius && mouseY >= ball.pos.y - ball.radius) {
-        ball.freezed = true
+    if (nextClickableBallIndex < balls.length) {
+        const ball = balls[nextClickableBallIndex]
+        for (const ball of balls) {
+            if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius && mouseX >= ball.pos.x - ball.radius && mouseY >= ball.pos.y - ball.radius) {
+            ball.freezed = true
+            nextClickableBallIndex++
+            }
         }
     }
 }
 
-
-
-
-
-
+/// WHOOP!! Mit der NextclickableBallIndex variabel können die Bälle jetzt nur noch in der richtigen Reihenfolge angeklickt werden.
+function mousePressed() { 
+    if (nextClickableBallIndex < balls.length) { 
+        const ball = balls[nextClickableBallIndex]; 
+        if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius && mouseX >= ball.pos.x - ball.radius && mouseY >= ball.pos.y - ball.radius) { 
+            ball.freezed = true; 
+            nextClickableBallIndex++; 
+        } 
+    } 
+}
