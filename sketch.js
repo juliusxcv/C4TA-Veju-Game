@@ -38,7 +38,7 @@ function draw() {
 function mousePressed() {
     for (const ball of balls) {
         if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius && mouseX >= ball.pos.x - ball.radius && mouseY >= ball.pos.y - ball.radius) {
-        ball.freezed == true
+        ball.freezed = true
         }
     }
 }
