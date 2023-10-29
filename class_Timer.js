@@ -2,7 +2,7 @@
 
 class Timer {
     constructor() {
-    this.time = 8 // Wert
+    this.time = 4 // Wert
     this.pos = 100, 100 // Position
 }
 

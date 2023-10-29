@@ -23,7 +23,7 @@ class Ball { //Erstellt Ball Klasse
 
             if (d < this.radius + balls[i].radius && this.index !== i) {
                 this.vel = this.vel.mult(-1)
-                fill(255,0,0)
+                fill(255)
                 break
             } else {
                 fill(255)
@@ -49,10 +49,11 @@ class Ball { //Erstellt Ball Klasse
         //Die else if Schleife hört zu ob das Statement "this.freezed = true" ist,
         //falls das Statement nicht false ist setzt sie die Geschwindigkeit auf 0 "this.vel.set(0)"
         if (!this.freezed) {
-            fill(0,255,0)
+            fill(255,255,255)
             this.pos.add(this.vel)
         } else {
-            fill(0,0,255)
+            // Idee: als Outline Element Definieren
+            fill(255,255,255)
             this.vel.set(0)
         }
         //console.log(this.freezed)

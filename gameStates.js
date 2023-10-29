@@ -7,16 +7,19 @@ let timeElapsed = 0
  
 function setup() {
     createCanvas(windowWidth, windowHeight)
-
 }
 
 function draw() {
     if(gameState == 0){
         // START
         startGame()
+
+
     } else if (gameState == 1) {
         //SPIELEN
         playGame()
+
+        
     } else if (gameState == 2) {
         //GAME OVER
         finishGame()
@@ -52,9 +55,10 @@ function finishGame() {
 
 function drawTime() {
     timeElapsed = millis()/10
+    textSize(40);
     if(hasGameStarted) {
         let gameTimeElapsed = round(gameDuration - (timeElapsed -gameStartTime))
-        text("Time is running out.." + gameTimeElapsed, width/2, height-fontSize)
+        text("Time is running out.." + gameTimeElapsed, width/2, height/2)
 
     }
     if(timeElapsed - gameStartTime >= gameDuration){
