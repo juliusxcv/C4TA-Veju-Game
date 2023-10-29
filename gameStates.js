@@ -4,7 +4,6 @@ let gameDuration = 1000
 let fontSize = 70
 let hasGameStarted = false
 let timeElapsed = 0
-let s = millis
  
 function setup() {
     createCanvas(windowWidth, windowHeight)
