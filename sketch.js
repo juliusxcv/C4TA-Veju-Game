@@ -18,7 +18,7 @@ function setup() {
 
 
 function draw() {
-    background(0)
+    background(0,0,0)
     
     //Loop der alle Methoden der Balls Klasse aufruft
     for (let i = 0; i < balls.length; i++){
@@ -30,7 +30,6 @@ function draw() {
 
   timer.show()
   gameTimer.show()
-
 }
 
  //Start mit dem ersten Ball im Array
@@ -58,4 +57,7 @@ function mousePressed() {
             nextClickableBallIndex++; 
         } 
     } 
+
+
 }
+ 

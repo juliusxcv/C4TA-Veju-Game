@@ -52,8 +52,8 @@ class Ball { //Erstellt Ball Klasse
             fill(255,255,255)
             this.pos.add(this.vel)
         } else {
-            // Idee: als Outline Element Definieren
-            fill(255,255,255)
+            // Idee: als Outline Element
+            fill(255,192,203)
             this.vel.set(0)
         }
         //console.log(this.freezed)

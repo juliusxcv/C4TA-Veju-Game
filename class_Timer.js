@@ -1,27 +1,24 @@
-// link: https://editor.p5js.org/marynotari/sketches/S1T2ZTMp-
-
 class Timer {
     constructor() {
     this.time = 4 // Wert
-    this.pos = 100, 100 // Position
+    this.pos = 10, 10 // Position
 }
 
 show() { 
     //Bildet die Zeichen ab
     //textAlign(CENTER, CENTER);
-    textSize(30);
-    text(this.time, width/2, height/2);
-    fill(255); // Textfarbe
+    textSize(70);
+    text(this.time);
+    fill(0, 255, 0); // Textfarbe
 
     if (frameCount % 60 == 0 && this.time > 0 ) {
         this.time--;
     }
 
     if (this.time == 0) {
-    text("GAME OVER", width/2, height*0.7)
+    textSize(70);
+    text("GAME OVER TEST", this.pos)
     }
 }
 }
-    
-
 

@@ -1,13 +1,15 @@
+// Start Countdown
+
 
 class GameTimer {
     constructor() {
-    this.gameTime = 8 // Wert
+    this.gameTime = 3 // Wert
 }
 
 show() { // Bildet die Zeichen ab
     textAlign(CENTER, CENTER)
     textSize(70)
-    fill(255,0,0) // Textfarbe
+    fill(255) // Textfarbe
     text(this.gameTime, width/2, height/2)
 
  // = muss noch ausgeblendet werden
@@ -16,8 +18,6 @@ show() { // Bildet die Zeichen ab
     }
 
 }
-
-
 }
     
 
