@@ -69,7 +69,7 @@ function drawTime() {
 
 }
 
-function mousePressed() {
+function keyPressed() {
     if(gameState == 0){
         gameState = 1
         gameStartTime = millis()/10

@@ -4,6 +4,14 @@ let timer  // Timer Wert
 let gameTimer
 let nextClickableBallIndex = 0
 
+//Spiellogik
+let gameState = 0
+let gameStartTime = 0 
+let gameDuration = 1000
+let fontSize = 70
+let hasGameStarted = false
+let timeElapsed = 0
+
 function setup() {
     createCanvas(windowWidth, windowHeight)
     
@@ -38,11 +46,80 @@ function setup() {
 }
 
 
+
+
 function draw() {
-    background(0,0,0)
+    if(gameState == 0){
+        // START
+        startGame()
+
+
+    } else if (gameState == 1) {
+        //SPIELEN
+        playGame()
+        GameMain()
+
+        
+    } else if (gameState == 2) {
+        //GAME OVER
+        finishGame()
+    }
+    drawTime()
+}
+
+function startGame() { //STARTSCREEN
+    background(0,255,0)
+    textSize(fontSize)
+    textAlign(CENTER,CENTER)
+    text("START", width/2, height/2)
+}
+
+function playGame() {
+    background(255,255,0)
+    textAlign(CENTER,CENTER)
+    textSize(fontSize)
+    text("GO!!", width/2, height/2)
+
+    //SPIELLOGIK
     
-    background(0)
+}
+
+function finishGame() {
+    background(255,0,0)
+    textAlign(CENTER,CENTER)
+    textSize(fontSize)
+    text("GAME OVER", width/2, height/2)
+
     
+}
+
+function drawTime() {
+    timeElapsed = millis()/10
+    textSize(70);
+    if(hasGameStarted) {
+        let gameTimeElapsed = round(gameDuration - (timeElapsed -gameStartTime))
+        text("Time is running out ..." + gameTimeElapsed, width/2, height/2)
+
+    }
+    if(timeElapsed - gameStartTime >= gameDuration){
+        gameStartTime = NaN
+        hasGameStarted = false
+        gameState = 2
+    }
+
+}
+
+function keyPressed() {
+    if(gameState == 0){
+        gameState = 1
+        gameStartTime = millis()/10
+        hasGameStarted = true
+    } else if (gameState == 2) {
+        gameState = 0
+    }
+}
+
+function GameMain() {
     // Draw lines between the centers of the balls in the order they appear in the array
     stroke(255);
     for (let i = 1; i < balls.length; i++) {
@@ -60,30 +137,19 @@ function draw() {
     }
 
 
-    
-    // // Draw the balls after drawing the lines
-    // for (let i = 0; i < balls.length; i++) {
-    //     let ball = balls[i];
-    //     ellipse(ball.pos.x, ball.pos.y, ball.radius * 2);
-    // }
-
-    
-
-  timer.show()
-  gameTimer.show()
-}
+    timer.show()
+    gameTimer.show()
+    }
 
 
 
-/// WHOOP!! Mit der NextclickableBallIndex variabel können die Bälle jetzt nur noch in der richtigen Reihenfolge angeklickt werden.
-function mousePressed() { 
+    /// WHOOP!! Mit der NextclickableBallIndex variabel können die Bälle jetzt nur noch in der richtigen Reihenfolge angeklickt werden.
+    function mousePressed() { 
     if (nextClickableBallIndex < balls.length) { 
         const ball = balls[nextClickableBallIndex]; 
         if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius && mouseX >= ball.pos.x - ball.radius && mouseY >= ball.pos.y - ball.radius) { 
             ball.freezed = true; 
             nextClickableBallIndex++; 
         } 
-    } 
-
-
-}
+    }
+} 
