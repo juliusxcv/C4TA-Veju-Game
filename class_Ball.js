@@ -4,7 +4,7 @@ class Ball { //Erstellt Ball Klasse
     constructor(index) {
         //this.index gibt den Kreisen ihren eigenen Wert (Position in Array Liste) um sie vergleichen zukönnen, zum einfärben zum Beispiel
         this.index = index
-        this.radius = random(10,50)
+        this.radius = random(20,50)
         //this.pos Gibt den Kreisen eine zufällige Startposition mit createVector(enthält x und y Wert) und verteilt sie so, dass sie nicht aus dem Canvas lampen
         this.pos = createVector(random(this.radius, width - this.radius), random(this.radius, height - this.radius)) 
         //this.vel erstellt die Richtung mithilfe Vektoren. this.vel gibt x und y wert aus
@@ -51,7 +51,7 @@ class Ball { //Erstellt Ball Klasse
         if (!this.freezed) {
             strokeWeight(2)
             stroke(255)
-            fill(0,0,0,0)
+            fill(0,0,0)
             this.pos.add(this.vel)
         } else {
             strokeWeight(2)
@@ -65,10 +65,10 @@ class Ball { //Erstellt Ball Klasse
     show() { //Zeichnet die Kreise
             strokeWeight(1)
             ellipse(this.pos.x, this.pos.y, this.radius*2)
-            // fill(255)
-            // textSize(this.radius)
-            // textAlign(CENTER, CENTER)
-            // text(this.index, this.pos.x, this.pos.y)
+            fill(255)
+            textSize(this.radius)
+            textAlign(CENTER, CENTER)
+            text(this.index, this.pos.x, this.pos.y)
     }
 }
 

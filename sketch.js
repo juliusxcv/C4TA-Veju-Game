@@ -41,6 +41,14 @@ function setup() {
 function draw() {
     background(0)
     
+    // Draw lines between the centers of the balls in the order they appear in the array
+    stroke(255);
+    for (let i = 1; i < balls.length; i++) {
+        let ballA = balls[i - 1];
+        let ballB = balls[i];
+        line(ballA.pos.x, ballA.pos.y, ballB.pos.x, ballB.pos.y);
+    }
+
     //Loop der alle Methoden der Balls Klasse aufruft
     for (let i = 0; i < balls.length; i++){
         balls[i].collide() //Vergleicht die Position des Kreises mit den anderen
@@ -49,19 +57,13 @@ function draw() {
         balls[i].show() //Zeichnet die Kreise, die Zahlen sind ihre indexnummern. Die brauchen die Kreise um sich selber zu kennen 
     }
 
-    // Draw lines between the centers of the balls in the order they appear in the array
-    stroke(255);
-    for (let i = 1; i < balls.length; i++) {
-        let ballA = balls[i - 1];
-        let ballB = balls[i];
-        line(ballA.pos.x, ballA.pos.y, ballB.pos.x, ballB.pos.y);
-    }
+
     
-    // Draw the balls after drawing the lines
-    for (let i = 0; i < balls.length; i++) {
-        let ball = balls[i];
-        ellipse(ball.pos.x, ball.pos.y, ball.radius * 2);
-    }
+    // // Draw the balls after drawing the lines
+    // for (let i = 0; i < balls.length; i++) {
+    //     let ball = balls[i];
+    //     ellipse(ball.pos.x, ball.pos.y, ball.radius * 2);
+    // }
 
     
 
