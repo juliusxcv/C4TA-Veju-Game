@@ -9,7 +9,7 @@ class Timer {
 show() { 
     //Bildet die Zeichen ab
     //textAlign(CENTER, CENTER);
-    textSize(30);
+    textSize(600);
     text(this.time, width/2, height/2);
     fill(255); // Textfarbe
 
@@ -18,7 +18,8 @@ show() {
     }
 
     if (this.time == 0) {
-    text("GAME OVER", width/2, height*0.7)
+        textSize(100)
+    text("GAME OVER", width/2, height/2)
     }
 }
 }
