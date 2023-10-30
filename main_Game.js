@@ -1,5 +1,4 @@
 // main_Game
-
 var balls = [] //Leerer Array der mit Kreisen befüllt wird
 let ballCount = 3 //Anzahl der Kreise
 let gameStartCountdown = 3;
@@ -82,7 +81,7 @@ function mousePressed() {
             ball.isBallMoving = false
             NumberOfHits++
             nextClickableBallIndex++
-            gameDuration += 0.5 //adds 1 second to the gameDuration
+            gameDuration += 5 //adds 1 second to the gameDuration
         } 
     }
 }
@@ -97,22 +96,62 @@ function startGame() { //STARTSCREEN
 
 
 function GameOver() {
-    textAlign(CENTER,CENTER)
-    textSize(fontSize)
-    fill(255,0,0)
-    text("GAME OVER", width/2, height/2)
+    textAlign(CENTER,CENTER);
+    textSize(fontSize);
+    fill(255,0,0);
+    text("GAME OVER", width/2, height/2);
 
-    
+    // Allow restarting the game on key press
+    if (keyIsPressed) {
+        restartGame(ballCount); // Reset the game with the original ball count
+    }
 }
 
 function GameWin() {
-    textAlign(CENTER,CENTER)
-    textSize(fontSize)
-    fill(0,255,0)
-    text("GAME WIN", width/2, height/2)
+    textAlign(CENTER,CENTER);
+    textSize(fontSize);
+    fill(0,255,0);
+    text("GAME WIN", width/2, height/2);
 
-    
+    // Allow restarting the game with more balls and extra time on key press
+    if (keyIsPressed) {
+        const newBallCount = ballCount + 5; // Increase the ball count by 5
+        const newGameDuration = gameDuration + 10; // Add 10 seconds to the game duration
+        restartGame(newBallCount, newGameDuration);
+    }
 }
+
+function restartGame(newBallCount, newGameDuration) {
+    balls = [];
+    ballCount = newBallCount;
+    gameDuration = newGameDuration;
+    nextClickableBallIndex = 0;
+    gameState = 0;
+    hasGameStarted = false;
+    NumberOfHits = 0;
+
+    for (let i = 0; i < ballCount; i++) {
+        let b;
+        let overlapping = false;
+
+        do {
+            overlapping = false;
+            b = new Ball(i);
+
+            for (let j = 0; j < i; j++) {
+                let other = balls[j];
+                let d = dist(b.pos.x, b.pos.y, other.pos.x, other.pos.y);
+
+                if (d < b.radius + other.radius) {
+                    overlapping = true;
+                    break;
+                }
+            }
+        } while (overlapping);
+        balls.push(b);
+    }
+}
+
 
 function keyPressed() {
     if(gameState == 0){ //START
