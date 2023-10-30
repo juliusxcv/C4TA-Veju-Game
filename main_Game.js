@@ -1,7 +1,7 @@
 // main_Game
 
 var balls = [] //Leerer Array der mit Kreisen befüllt wird
-let ballCount = 3 //Anzahl der Kreise
+let ballCount = 5 //Anzahl der Kreise
 let ScoreTimer
 let nextClickableBallIndex = 0
 let gameLogic = new GameLogic(balls)
@@ -81,6 +81,7 @@ function mousePressed() {
             ball.isBallMoving = false
             NumberOfHits++
             nextClickableBallIndex++
+            gameDuration += 0.5 //adds 1 second to the gameDuration
         } 
     }
 }
@@ -95,18 +96,18 @@ function startGame() { //STARTSCREEN
 
 
 function GameOver() {
-    background(255,0,0)
     textAlign(CENTER,CENTER)
     textSize(fontSize)
+    fill(255,0,0)
     text("GAME OVER", width/2, height/2)
 
     
 }
 
 function GameWin() {
-    background(0,255,0)
     textAlign(CENTER,CENTER)
     textSize(fontSize)
+    fill(0,255,0)
     text("GAME WIN", width/2, height/2)
 
     
