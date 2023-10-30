@@ -1,15 +1,15 @@
 // main_Game
 
 var balls = [] //Leerer Array der mit Kreisen befüllt wird
-let ballCount = 3 //Anzahl der Kreise
-let gameStartCountdown = 3;
+let ballCount = 8 //Anzahl der Kreise
+// let gameStartCountdown = 12; -> Kann raus 
 let ScoreTimer
 let nextClickableBallIndex = 0
 let gameLogic = new GameLogic(balls)
 
 //Spiellogik
 let gameState = 0
-let gameDuration = 60 // Defintion Spieldauer in Sekunden
+let gameDuration = 10 // Defintion Spieldauer in Sekunden
 let fontSize = 70
 let hasGameStarted = false
 let NumberOfHits = 0
@@ -98,18 +98,21 @@ function startGame() { //STARTSCREEN
 
 function GameOver() {
     textAlign(CENTER,CENTER)
-    textSize(fontSize)
-    fill(255,0,0)
+    fill(255)
+    ellipse(width/2, height/2, 400, 400)
+    textSize(30)
+    fill(0)
     text("GAME OVER", width/2, height/2)
-
-    
 }
 
 function GameWin() {
     textAlign(CENTER,CENTER)
-    textSize(fontSize)
-    fill(0,255,0)
+    fill(255)
+    ellipse(width/2, height/2, 400, 400) 
+    textSize(30)
+    fill(0)
     text("GAME WIN", width/2, height/2)
+
 
     
 }
