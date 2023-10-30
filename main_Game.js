@@ -1,16 +1,17 @@
 // main_Game
 
-
 var balls = [] //Leerer Array der mit Kreisen befüllt wird
 let ballCount = 3 //Anzahl der Kreise
 let ScoreTimer
 let nextClickableBallIndex = 0
+let gameLogic = new GameLogic(balls)
 
 //Spiellogik
 let gameState = 0
 let gameDuration = 10 // Defintion Spieldauer
 let fontSize = 70
 let hasGameStarted = false
+let NumberOfHits = 0
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
@@ -42,6 +43,10 @@ function setup() {
 
 
 function draw() {
+    if(ballCount == NumberOfHits) {
+        gameState = 3
+    }
+    
     if(gameState == 0){
         // START
         startGame()
@@ -51,10 +56,8 @@ function draw() {
     } else if (gameState == 1) {
         //SPIELEN
         background(0)
-        logic_Game()
+        gameLogic.logic()
         scoreTimer()
-
-        
 
         
     } else if (gameState == 2) {
@@ -70,6 +73,17 @@ function draw() {
     
 }
 
+/// WHOOP!! Mit der NextclickableBallIndex variabel können die Bälle jetzt nur noch in der richtigen Reihenfolge angeklickt werden.
+function mousePressed() { 
+    if (nextClickableBallIndex < balls.length) { 
+        const ball = balls[nextClickableBallIndex]
+        if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius && mouseX >= ball.pos.x - ball.radius && mouseY >= ball.pos.y - ball.radius) { 
+            ball.isBallMoving = false
+            NumberOfHits++
+            nextClickableBallIndex++
+        } 
+    }
+}
 
 
 function startGame() { //STARTSCREEN
@@ -95,8 +109,8 @@ function GameWin() {
     textSize(fontSize)
     text("GAME WIN", width/2, height/2)
 
+    
 }
-
 
 function keyPressed() {
     if(gameState == 0){ //START
