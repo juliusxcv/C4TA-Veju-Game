@@ -1,4 +1,4 @@
-// Definition classen 
+// class_Ball
 
 class Ball { //Erstellt Ball Klasse
     constructor(index) {

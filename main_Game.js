@@ -1,13 +1,51 @@
+// main_Game
+
+
+var balls = [] //Leerer Array der mit Kreisen befüllt wird
+let ballCount = 30
+let ScoreTimer
+let nextClickableBallIndex = 0
+
+//Spiellogik
 let gameState = 0
 let gameStartTime = 0 
 let gameDuration = 1000
 let fontSize = 70
 let hasGameStarted = false
 let timeElapsed = 0
- 
+
 function setup() {
     createCanvas(windowWidth, windowHeight)
+
+    // Neuer Loop der die Kreise erstellt und dabei Überlappungen verhindert
+    for (let i = 0; i < ballCount; i++) {
+        let b;
+        let overlapping = false;
+
+        do {
+            overlapping = false;
+            b = new Ball(i);
+
+            for (let j = 0; j < i; j++) {
+                let other = balls[j];
+                let d = dist(b.pos.x, b.pos.y, other.pos.x, other.pos.y);
+
+                if (d < b.radius + other.radius) {
+                    overlapping = true;
+                    break;
+                }
+            }
+        } while (overlapping);
+
+        balls.push(b);
+    }
+
+    
+
 }
+
+
+
 
 function draw() {
     if(gameState == 0){
@@ -17,15 +55,18 @@ function draw() {
 
     } else if (gameState == 1) {
         //SPIELEN
+        scoreTimer()
         playGame()
+        logic_Game()
 
         
     } else if (gameState == 2) {
         //GAME OVER
         finishGame()
     }
-    drawTime()
 }
+
+
 
 function startGame() { //STARTSCREEN
     background(0,255,0)
@@ -53,21 +94,9 @@ function finishGame() {
     
 }
 
-function drawTime() {
-    timeElapsed = millis()/10
-    textSize(70);
-    if(hasGameStarted) {
-        let gameTimeElapsed = round(gameDuration - (timeElapsed -gameStartTime))
-        text("Time is running out ..." + gameTimeElapsed, width/2, height/2)
 
-    }
-    if(timeElapsed - gameStartTime >= gameDuration){
-        gameStartTime = NaN
-        hasGameStarted = false
-        gameState = 2
-    }
 
-}
+
 
 function keyPressed() {
     if(gameState == 0){
