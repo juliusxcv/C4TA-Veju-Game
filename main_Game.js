@@ -8,7 +8,7 @@ let nextClickableBallIndex = 0
 
 //Spiellogik
 let gameState = 0
-let gameDuration = 1000
+let gameDuration = 60 // Defintion Spieldauer
 let fontSize = 70
 let hasGameStarted = false
 
@@ -74,7 +74,7 @@ function startGame() { //STARTSCREEN
 
 
 function finishGame() {
-    background(255,0,0)
+    background(0)
     textAlign(CENTER,CENTER)
     textSize(fontSize)
     text("GAME OVER", width/2, height/2)
@@ -86,7 +86,7 @@ function finishGame() {
 function keyPressed() {
     if(gameState == 0){ //START
         gameState = 1  //PLAY
-        gameStartTime = millis()/10
+        gameStartTime = millis()/100 // Definition millis muss im Projekt immer gelich definiert sein z.B millis()/100
         hasGameStarted = true
     } else if (gameState == 2) { //OVER
         gameState = 0 //START
