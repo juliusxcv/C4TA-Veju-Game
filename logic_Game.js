@@ -2,6 +2,7 @@
 
 
 function logic_Game() {
+    background(0,0,0);
     // Draw lines between the centers of the balls in the order they appear in the array
     stroke(255);
     for (let i = 1; i < balls.length; i++) {
@@ -14,8 +15,7 @@ function logic_Game() {
     for (let i = 0; i < balls.length; i++){
         balls[i].collide() //Vergleicht die Position des Kreises mit den anderen
         balls[i].edges() //Erstellt die Canvasgrenzen
-        balls[i].move() //Gibt den Kreisen ihre Gescwindigkeit
-        balls[i].show() //Zeichnet die Kreise, die Zahlen sind ihre indexnummern. Die brauchen die Kreise um sich selber zu kennen 
+        balls[i].move() //Zeichnet die Kreise und gibt den Kreisen ihre Gescwindigkeit
     }
     }
 

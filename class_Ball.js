@@ -49,26 +49,28 @@ class Ball { //Erstellt Ball Klasse
         //Die else if Schleife hört zu ob das Statement "this.freezed = true" ist,
         //falls das Statement nicht false ist setzt sie die Geschwindigkeit auf 0 "this.vel.set(0)"
         if (this.isBallMoving == true) {
-            strokeWeight(2)
-            stroke(255)
-            fill(0,0,0)
-            this.pos.add(this.vel)
-        } else {
-            strokeWeight(2)
-            stroke(255,0,0)
-            fill(0,255,0)
-            this.vel.set(0)
-        }
-        //console.log(this.freezed)
-    }
-
-    show() { //Zeichnet die Kreise
+           
             strokeWeight(1)
+            fill(0)
             ellipse(this.pos.x, this.pos.y, this.radius*2)
             fill(255)
             textSize(this.radius)
             textAlign(CENTER, CENTER)
             text(this.index, this.pos.x, this.pos.y)
+
+            this.pos.add(this.vel)
+        } else {
+           
+            strokeWeight(0)
+            fill(255)
+            ellipse(this.pos.x, this.pos.y, this.radius*2)
+            fill(0)
+            textSize(this.radius)
+            textAlign(CENTER, CENTER)
+            text(this.index, this.pos.x, this.pos.y)
+            
+            this.vel.set(0)
+        }
     }
 }
 

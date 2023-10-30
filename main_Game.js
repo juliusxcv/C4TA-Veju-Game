@@ -17,6 +17,8 @@ let timeElapsed = 0
 function setup() {
     createCanvas(windowWidth, windowHeight)
 
+    StartCountdown = new StartCountdown()
+
     // Neuer Loop der die Kreise erstellt und dabei Überlappungen verhindert
     for (let i = 0; i < ballCount; i++) {
         let b;
@@ -46,6 +48,7 @@ function setup() {
 function draw() {
     if(gameState == 0){
         // START
+        
         startGame()
 
 
