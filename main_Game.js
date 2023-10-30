@@ -8,15 +8,12 @@ let nextClickableBallIndex = 0
 
 //Spiellogik
 let gameState = 0
-let gameStartTime = 0
 let gameDuration = 1000
 let fontSize = 70
 let hasGameStarted = false
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
-
-    StartCountdown = new StartCountdown()
 
     // Neuer Loop der die Kreise erstellt und dabei Überlappungen verhindert
     for (let i = 0; i < ballCount; i++) {
@@ -47,8 +44,8 @@ function setup() {
 function draw() {
     if(gameState == 0){
         // START
-        
         startGame()
+        startCountdown()
 
 
     } else if (gameState == 1) {
@@ -69,10 +66,10 @@ function draw() {
 
 
 function startGame() { //STARTSCREEN
-    background(0,255,0)
+    background(0)
     textSize(fontSize)
     textAlign(CENTER,CENTER)
-    text("START", width/2, height/2)
+    text("PLAY", width/2, height/2)
 }
 
 
