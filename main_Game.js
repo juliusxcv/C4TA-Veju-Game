@@ -1,14 +1,15 @@
 // main_Game
 
 var balls = [] //Leerer Array der mit Kreisen befüllt wird
-let ballCount = 5 //Anzahl der Kreise
+let ballCount = 3 //Anzahl der Kreise
+let gameStartCountdown = 3;
 let ScoreTimer
 let nextClickableBallIndex = 0
 let gameLogic = new GameLogic(balls)
 
 //Spiellogik
 let gameState = 0
-let gameDuration = 10 // Defintion Spieldauer
+let gameDuration = 60 // Defintion Spieldauer in Sekunden
 let fontSize = 70
 let hasGameStarted = false
 let NumberOfHits = 0

@@ -12,4 +12,6 @@ function startCountdown(){
     if(frameCount % 60 == 0 && startTime > 0 ) {
         startTime--
     }
+
+    
 }
