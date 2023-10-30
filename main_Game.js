@@ -8,7 +8,7 @@ let nextClickableBallIndex = 0
 
 //Spiellogik
 let gameState = 0
-let gameDuration = 1000
+let gameDuration = 5
 let fontSize = 70
 let hasGameStarted = false
 
@@ -59,8 +59,15 @@ function draw() {
         
     } else if (gameState == 2) {
         //GAME OVER
-        finishGame()
+        GameOver()
+    
+
+    } else if (gameState == 3) {
+        //GAME WIN
+        GameWin()
     }
+
+    
 }
 
 
@@ -73,13 +80,21 @@ function startGame() { //STARTSCREEN
 }
 
 
-function finishGame() {
+function GameOver() {
     background(255,0,0)
     textAlign(CENTER,CENTER)
     textSize(fontSize)
     text("GAME OVER", width/2, height/2)
 
     
+}
+
+function GameWin() {
+    background(0,255,0)
+    textAlign(CENTER,CENTER)
+    textSize(fontSize)
+    text("GAME WIN", width/2, height/2)
+
 }
 
 
