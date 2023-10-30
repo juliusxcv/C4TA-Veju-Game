@@ -1,7 +1,7 @@
 // class_ScoreTimer
 
 function scoreTimer() {
-    timeElapsed = millis()/100
+    timeElapsed = millis()/1000
     strokeWeight(0)
     fill(255)
     textAlign(LEFT, TOP)
