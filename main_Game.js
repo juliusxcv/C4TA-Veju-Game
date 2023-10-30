@@ -36,12 +36,8 @@ function setup() {
                 }
             }
         } while (overlapping);
-
         balls.push(b);
     }
-
-    
-
 }
 
 
@@ -56,7 +52,6 @@ function draw() {
     } else if (gameState == 1) {
         //SPIELEN
         scoreTimer()
-        playGame()
         logic_Game()
 
         
@@ -75,15 +70,6 @@ function startGame() { //STARTSCREEN
     text("START", width/2, height/2)
 }
 
-function playGame() {
-    background(255,255,0)
-    textAlign(CENTER,CENTER)
-    textSize(fontSize)
-    text("GO!!", width/2, height/2)
-
-    //SPIELLOGIK
-    
-}
 
 function finishGame() {
     background(255,0,0)

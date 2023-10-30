@@ -26,7 +26,7 @@ function logic_Game() {
     if (nextClickableBallIndex < balls.length) { 
         const ball = balls[nextClickableBallIndex]; 
         if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius && mouseX >= ball.pos.x - ball.radius && mouseY >= ball.pos.y - ball.radius) { 
-            ball.freezed = true; 
+            ball.isBallMoving = false; 
             nextClickableBallIndex++; 
         } 
     }
