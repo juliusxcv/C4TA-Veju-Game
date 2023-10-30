@@ -8,7 +8,7 @@ let nextClickableBallIndex = 0
 
 //Spiellogik
 let gameState = 0
-let gameDuration = 5
+let gameDuration = 60 // Defintion Spieldauer
 let fontSize = 70
 let hasGameStarted = false
 
@@ -101,7 +101,7 @@ function GameWin() {
 function keyPressed() {
     if(gameState == 0){ //START
         gameState = 1  //PLAY
-        gameStartTime = millis()/10
+        gameStartTime = millis()/100 // Definition millis muss im Projekt immer gelich definiert sein z.B millis()/100
         hasGameStarted = true
     } else if (gameState == 2) { //OVER
         gameState = 0 //START

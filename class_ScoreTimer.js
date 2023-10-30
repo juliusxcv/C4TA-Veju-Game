@@ -5,7 +5,7 @@ function scoreTimer() {
     strokeWeight(0)
     fill(255)
     textAlign(LEFT, TOP)
-    textSize(40);
+    textSize(20);
     if(hasGameStarted) {
         let gameTimeElapsed = round(gameDuration - (timeElapsed -gameStartTime))
         text("ScoreTimer: " + gameTimeElapsed, 30, 30)
