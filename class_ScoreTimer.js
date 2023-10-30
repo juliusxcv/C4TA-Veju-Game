@@ -1,7 +1,7 @@
 // class_ScoreTimer
 
 function scoreTimer() {
-    timeElapsed = millis()/1000
+    timeElapsed = millis()/100
     strokeWeight(0)
     fill(255)
     textAlign(LEFT, TOP)
@@ -18,5 +18,6 @@ function scoreTimer() {
     }
 
     text("Number of Hits: " + NumberOfHits, 30, 60)
+    text("Level: " + NumberOfLevels, 30, 90)
 
 }

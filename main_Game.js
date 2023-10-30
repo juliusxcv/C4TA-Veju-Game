@@ -8,10 +8,11 @@ let gameLogic = new GameLogic(balls)
 
 //Spiellogik
 let gameState = 0
-let gameDuration = 10 // Defintion Spieldauer in Sekunden
+let gameDuration = 60 // Defintion Spieldauer in Sekunden
 let fontSize = 70
 let hasGameStarted = false
 let NumberOfHits = 0
+let NumberOfLevels = 0
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
@@ -81,7 +82,7 @@ function mousePressed() {
             ball.isBallMoving = false
             NumberOfHits++
             nextClickableBallIndex++
-            gameDuration += 5 //adds 1 second to the gameDuration
+            gameDuration += 2 //adds 1 second to the gameDuration
         } 
     }
 }
@@ -97,8 +98,10 @@ function startGame() { //STARTSCREEN
 
 function GameOver() {
     textAlign(CENTER,CENTER);
-    textSize(fontSize);
-    fill(255,0,0);
+    fill(255)
+    ellipse(width/2, height/2, 400, 400)
+    textSize(30);
+    fill(0);
     text("GAME OVER", width/2, height/2);
 
     // Allow restarting the game on key press
@@ -109,16 +112,19 @@ function GameOver() {
 
 function GameWin() {
     textAlign(CENTER,CENTER);
-    textSize(fontSize);
-    fill(0,255,0);
+    fill(255)
+    ellipse(width/2, height/2, 400, 400)
+    textSize(30);
+    fill(0);
     text("GAME WIN", width/2, height/2);
 
     // Allow restarting the game with more balls and extra time on key press
     if (keyIsPressed) {
         const newBallCount = ballCount + 5; // Increase the ball count by 5
-        const newGameDuration = gameDuration + 10; // Add 10 seconds to the game duration
+        const newGameDuration = gameDuration + 5; // Add 10 seconds to the game duration
         restartGame(newBallCount, newGameDuration);
-    }
+        NumberOfLevels++
+    } 
 }
 
 function restartGame(newBallCount, newGameDuration) {
@@ -156,7 +162,7 @@ function restartGame(newBallCount, newGameDuration) {
 function keyPressed() {
     if(gameState == 0){ //START
         gameState = 1  //PLAY
-        gameStartTime = millis()/1000 // Definition millis muss im Projekt immer gelich definiert sein z.B millis()/100
+        gameStartTime = millis()/100 // Definition millis muss im Projekt immer gelich definiert sein z.B millis()/100
         hasGameStarted = true
     } else if (gameState == 2) { //OVER
         gameState = 0 //START
