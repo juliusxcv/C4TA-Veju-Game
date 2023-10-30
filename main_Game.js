@@ -2,17 +2,16 @@
 
 
 var balls = [] //Leerer Array der mit Kreisen befüllt wird
-let ballCount = 30
+let ballCount = 3 //Anzahl der Kreise
 let ScoreTimer
 let nextClickableBallIndex = 0
 
 //Spiellogik
 let gameState = 0
-let gameStartTime = 0 
+let gameStartTime = 0
 let gameDuration = 1000
 let fontSize = 70
 let hasGameStarted = false
-let timeElapsed = 0
 
 function setup() {
     createCanvas(windowWidth, windowHeight)
@@ -54,8 +53,11 @@ function draw() {
 
     } else if (gameState == 1) {
         //SPIELEN
-        scoreTimer()
+        background(0)
         logic_Game()
+        scoreTimer()
+
+        
 
         
     } else if (gameState == 2) {
@@ -84,15 +86,12 @@ function finishGame() {
 }
 
 
-
-
-
 function keyPressed() {
-    if(gameState == 0){
-        gameState = 1
+    if(gameState == 0){ //START
+        gameState = 1  //PLAY
         gameStartTime = millis()/10
         hasGameStarted = true
-    } else if (gameState == 2) {
-        gameState = 0
+    } else if (gameState == 2) { //OVER
+        gameState = 0 //START
     }
 }

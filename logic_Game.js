@@ -2,8 +2,8 @@
 
 
 function logic_Game() {
-    background(0,0,0);
     // Draw lines between the centers of the balls in the order they appear in the array
+    strokeWeight(1)
     stroke(255);
     for (let i = 1; i < balls.length; i++) {
         let ballA = balls[i - 1];
@@ -24,10 +24,10 @@ function logic_Game() {
     /// WHOOP!! Mit der NextclickableBallIndex variabel können die Bälle jetzt nur noch in der richtigen Reihenfolge angeklickt werden.
     function mousePressed() { 
     if (nextClickableBallIndex < balls.length) { 
-        const ball = balls[nextClickableBallIndex]; 
+        const ball = balls[nextClickableBallIndex]
         if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius && mouseX >= ball.pos.x - ball.radius && mouseY >= ball.pos.y - ball.radius) { 
-            ball.isBallMoving = false; 
-            nextClickableBallIndex++; 
+            ball.isBallMoving = false
+            nextClickableBallIndex++
         } 
     }
 } 
