@@ -1,7 +1,11 @@
-// logic_Game
+// class_Game_Logic
 
+class GameLogic {
+    constructor(balls) {
+        this.balls = balls
+}
 
-function logic_Game() {
+ logic() {
     // Draw lines between the centers of the balls in the order they appear in the array
     strokeWeight(1)
     stroke(255);
@@ -17,17 +21,5 @@ function logic_Game() {
         balls[i].edges() //Erstellt die Canvasgrenzen
         balls[i].move() //Zeichnet die Kreise und gibt den Kreisen ihre Gescwindigkeit
     }
-    }
-
-
-
-    /// WHOOP!! Mit der NextclickableBallIndex variabel können die Bälle jetzt nur noch in der richtigen Reihenfolge angeklickt werden.
-    function mousePressed() { 
-    if (nextClickableBallIndex < balls.length) { 
-        const ball = balls[nextClickableBallIndex]
-        if (mouseIsPressed && mouseX <= ball.pos.x + ball.radius && mouseY <= ball.pos.y + ball.radius && mouseX >= ball.pos.x - ball.radius && mouseY >= ball.pos.y - ball.radius) { 
-            ball.isBallMoving = false
-            nextClickableBallIndex++
-        } 
     }
 } 

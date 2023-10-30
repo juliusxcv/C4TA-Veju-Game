@@ -17,4 +17,6 @@ function scoreTimer() {
         gameState = 2
     }
 
+    text("Number of Hits: " + NumberOfHits, 30, 60)
+
 }
